@@ -10,53 +10,37 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
+  interface ElInner {}
+  interface ElOuter {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLElInnerElement extends Components.ElInner, HTMLStencilElement {}
+  var HTMLElInnerElement: {
+    prototype: HTMLElInnerElement;
+    new (): HTMLElInnerElement;
+  };
+
+  interface HTMLElOuterElement extends Components.ElOuter, HTMLStencilElement {}
+  var HTMLElOuterElement: {
+    prototype: HTMLElOuterElement;
+    new (): HTMLElOuterElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'el-inner': HTMLElInnerElement;
+    'el-outer': HTMLElOuterElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface ElInner {}
+  interface ElOuter {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'el-inner': ElInner;
+    'el-outer': ElOuter;
   }
 }
 
@@ -66,7 +50,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'el-inner': LocalJSX.ElInner & JSXBase.HTMLAttributes<HTMLElInnerElement>;
+      'el-outer': LocalJSX.ElOuter & JSXBase.HTMLAttributes<HTMLElOuterElement>;
     }
   }
 }

@@ -11,7 +11,12 @@
 </head>
 <body>
 
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <el-outer>
+    <el-inner>
+      <h2 slot="header">hey</h2>
+    </el-inner>
+    <p>I will be in the default content</p>
+  </el-outer>
 
 </body>
 </html>
